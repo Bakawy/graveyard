@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+glee club is G#4 Pitch #68
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midi2Remix</title>
+
+    <script src="scripts/jszip.min.js" defer></script>
+    <script src="scripts/tone.js" defer></script>
+    <script src="scripts/helper.js" defer></script>
+    <script src="scripts/remixer.js" defer></script>
+    <script src="scripts/website.js" defer></script>
+
+    <style>
+        #decal_editor {
+            background-color: lightblue;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+        }
+
+        #hs_preview {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        input[type="text"] {
+            field-sizing: content;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="font-size:xx-large;">THIS WEBSITE IS UNFINISHED</p>
+
+    <label for="midi input">Load MIDI</label>
+    <input type="file" id="midi_input"></input><br><br>
+
+    <label for="sfx_riq_input">Load SFX RIQ</label>
+    <input type="file" id="sfx_riq_input"></input><br>
+    <label for="sfx_riq_default_toggle">Use Default</label>
+    <input type="checkbox" id="sfx_riq_default_toggle" checked><br><br>
+
+    <label for="midi input">Load RIQ Settings</label>
+    <input type="file" id="riq_settings_input"></input><br><br>
+
+    <div id="sfx_section" style="background-color: rgb(105, 228, 105);"></div><br><br>
+    <!--
+    <select id="sfx selection"></select><br><br>
+    -->
+
+    <button id="generate" onclick="generateButton()">Generate</button><br><br>
+
+    <a id="remix_download">Download Remix</a><br>
+
+    <div id="decal_editor">
+        <p class="instrument_name">Select Instrument</p><br>
+        <canvas id="hs_preview" width="1778" height="1000"></canvas><br>
+        <div class="decal_options"></div>
+    </div>
+
+    <template id="selector_template">
+        <div>
+            <p class="name" style="margin-bottom: 0px;">instrument name</p>
+            <select class="select" onchange="updateCanvas()"></select><br>
+            <label>
+                Volume
+                <input type="text" class="volume" value="1"></input>
+            </label><br>
+            <button onclick="selectInstrument(this)" class="decal_select">Modify Decals</button>
+        </div>
+    </template>
+    <template id="decal_option_template">
+        <label>
+            <span>Label</span>
+            <input type="text">
+        </label><br>
+    </template>
+    <img src="background.png" id="canvas_background" style="visibility: hidden; position: absolute;">
+</body>
+
+</html>

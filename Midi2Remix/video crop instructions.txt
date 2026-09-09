@@ -1,0 +1,8 @@
+find crop
+ffmpeg -i in.mp4 -vf cropdetect -f null -    # read crop=W:H:X:Y from the log
+
+crop vid
+ffmpeg -i in.mp4 -vf crop=W:H:X:Y out.mp4
+
+scale vid
+ffmpeg -i input.mp4 -vf scale=1000:1000 output.mp4
