@@ -8,6 +8,7 @@ fetch("sfx.riq").then((value) => {
     sfxRiqFile = defaultSfxRiqFile;
 });
 let resources = [];
+const MAX_DECALS_PER_SECOND = 15;
 
 
 async function convertToRemix(file) {
@@ -249,7 +250,7 @@ function chartEntities(entities, tempoChanges) {
                 bpm = tempoAt(event.beat, tempoChanges);
                 dps = dpb * bpm / 60; //decals per second
 
-                stretch = Math.max(Math.floor(dps / 15), 1);
+                stretch = Math.max(Math.floor(dps / MAX_DECALS_PER_SECOND), 1);
 
                 for (let i = 0; i < sfx.decalEntities.length; i += 1) {
                     const entity = structuredClone(sfx.decalEntities[i]);
