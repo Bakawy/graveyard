@@ -8,7 +8,7 @@ fetch("sfx.riq").then((value) => {
     sfxRiqFile = defaultSfxRiqFile;
 });
 let resources = [];
-const MAX_DECALS_PER_SECOND = 15;
+let MAX_DECALS_PER_SECOND = 15;
 
 
 async function convertToRemix(file) {
