@@ -14,7 +14,7 @@ const websiteTitle = document.title;
 
 let selectedDiv;
 let ldm = 1;
-let noDecal = true;
+let noDecal = false;
 
 
 midi_input.addEventListener("input", async (e) => {
